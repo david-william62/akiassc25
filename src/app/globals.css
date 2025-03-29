@@ -14,13 +14,60 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #540d0d00;
+    --foreground: #ededed00;
   }
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(to bottom right, black, #172554, black);
+  background-attachment: fixed;
+  background-size: cover;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overscroll-behavior-y: none; /* Prevents bouncing on some mobile browsers */
+}
+
+/* Improve smooth scrolling for a better transition experience */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  scroll-snap-type: y proximity; /* Enable scroll snapping */
+}
+
+/* Enhance scroll snap for main sections with better timing */
+section {
+  scroll-snap-align: start;
+  scroll-margin-top: 0;
+  transition: background-color 0.5s ease-in-out;
+}
+
+/* Enhance scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.8);
+}
+
+/* Mobile touch scrolling improvements */
+@media (max-width: 768px) {
+  html, body {
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+  }
 }

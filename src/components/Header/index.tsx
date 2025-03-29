@@ -2,38 +2,17 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center w-full px-8 py-4 bg-white/10 backdrop-blur-md rounded-lg shadow-md">
-      <nav className="flex gap-8">
-        <a href="#" className="text-white font-bold hover:underline">
-          HOME
-        </a>
-        <a href="#" className="text-white font-bold hover:underline">
-          EVENTS
-        </a>
-        <a href="#" className="text-white font-bold hover:underline">
-          ABOUT
-        </a>
-      </nav>
-      <div className="flex justify-center items-center">
+    <header className="fixed top-0 left-0 flex justify-between items-center w-full px-8 py-4 backdrop-blur-md bg-black/60 shadow-md border-b-2 border-blue-500 z-50">
+      <div className="flex justify-start items-center">
         <Image
-          src="/akiassc25.png"
+          src="/akiassc25logo.png"
           alt="Akiassc Logo"
-          width={50}
-          height={50}
+          width={100}
+          height={100}
           className="rounded-full"
         />
       </div>
-      <nav className="flex gap-8">
-        <a href="#" className="text-white font-bold hover:underline">
-          PRO SHOWS
-        </a>
-        <a href="#" className="text-white font-bold hover:underline">
-          BROCHURE
-        </a>
-        <a href="#" className="text-white font-bold hover:underline">
-          TEAMS
-        </a>
-      </nav>
+      <div className="flex-1"></div> {/* Spacer to push logo to left */}
     </header>
   );
 }
