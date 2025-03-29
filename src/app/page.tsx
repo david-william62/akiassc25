@@ -4,17 +4,23 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import CountdownSection from "@/components/CountdownSection";
 import { BackgroundBeams } from "@/components/ui/background";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState, useCallback } from "react";
 
 export default function Home() {
   const aboutSectionRef = useRef<HTMLElement | null>(null);
   const heroSectionRef = useRef<HTMLDivElement | null>(null);
   const countdownSectionRef = useRef<HTMLElement | null>(null);
   const [currentSection, setCurrentSection] = useState("hero");
+  const [isScrolling, setIsScrolling] = useState(false);
 
-  useEffect(() => {
-    const handleWheel = (event: WheelEvent) => {
-      if (event.deltaY > 0) {
+  const handleWheel = useCallback(
+    (event: WheelEvent) => {
+      if (isScrolling) return;
+
+      setIsScrolling(true);
+      setTimeout(() => setIsScrolling(false), 1000); // Debounce for 1 second
+
+      if (event.deltaY > 3) {
         if (currentSection === "hero" && aboutSectionRef.current) {
           aboutSectionRef.current.scrollIntoView({ behavior: "smooth" });
           setCurrentSection("about");
@@ -22,7 +28,7 @@ export default function Home() {
           countdownSectionRef.current.scrollIntoView({ behavior: "smooth" });
           setCurrentSection("countdown");
         }
-      } else if (event.deltaY < 0) {
+      } else if (event.deltaY < 3) {
         if (currentSection === "countdown" && aboutSectionRef.current) {
           aboutSectionRef.current.scrollIntoView({ behavior: "smooth" });
           setCurrentSection("about");
@@ -31,11 +37,14 @@ export default function Home() {
           setCurrentSection("hero");
         }
       }
-    };
+    },
+    [currentSection, isScrolling]
+  );
 
+  useEffect(() => {
     window.addEventListener("wheel", handleWheel);
     return () => window.removeEventListener("wheel", handleWheel);
-  }, [currentSection]);
+  }, [handleWheel]);
 
   return (
     <div className="min-h-screen relative w-full pt-16">
