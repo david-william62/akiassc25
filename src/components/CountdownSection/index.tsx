@@ -40,7 +40,7 @@ const CountdownSection = forwardRef<HTMLElement>((_, ref) => {
   return (
     <section
       ref={ref}
-      className="relative flex flex-col items-center justify-center min-h-screen px-8 py-16 text-gray-300"
+      className="relative flex items-center justify-center min-h-dvh max-h-dvh text-gray-300"
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}

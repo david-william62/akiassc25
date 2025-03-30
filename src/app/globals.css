@@ -36,7 +36,7 @@ body {
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  scroll-snap-type: y proximity; /* Enable scroll snapping */
+  scroll-snap-type: y mandatory; /* Changed from proximity to mandatory for better snapping */
 }
 
 /* Enhance scroll snap for main sections with better timing */
@@ -44,6 +44,8 @@ section {
   scroll-snap-align: start;
   scroll-margin-top: 0;
   transition: background-color 0.5s ease-in-out;
+  height: 100vh; /* Ensure sections take up full viewport height */
+  width: 100%; /* Ensure full width */
 }
 
 /* Enhance scrollbar styling */

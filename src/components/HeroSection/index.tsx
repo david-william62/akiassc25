@@ -8,7 +8,7 @@ export default function HeroSection() {
   const [typingComplete, setTypingComplete] = useState(false);
   
   // Text to type in the animation
-  const text = "Join us for an exceptional journey into the world of AKIASSC";
+  const text = "Join us to shape the future of technology and innovation.";
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -53,7 +53,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="relative z-20 flex flex-col items-center justify-center text-center h-screen">
+    <div className="relative z-20 flex flex-col items-center justify-center text-center min-h-screen">
       <motion.div 
         className="mb-6"
         initial={{ scale: 0.8, opacity: 0 }}

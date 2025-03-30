@@ -12,7 +12,14 @@ export default function Header() {
           className="rounded-full"
         />
       </div>
-      <div className="flex-1"></div> {/* Spacer to push logo to left */}
+      <div className="flex justify-end items-center">
+        <Image 
+            src="/ieee-white.png"
+            alt="IEEE"
+            width={100}
+            height={100}
+          />
+      </div>
     </header>
   );
 }
