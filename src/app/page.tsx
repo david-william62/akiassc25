@@ -100,7 +100,7 @@ export default function Home() {
         </div>
         <AboutSection ref={aboutSectionRef} />
         <CountdownSection ref={countdownSectionRef} />
-        <BackgroundBeams className="z-0 opacity-30" pathCount={15} />
+        <BackgroundBeams className="z-0 opacity-30"/>
       </Suspense>
     </div>
   );
